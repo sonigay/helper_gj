@@ -150,14 +150,35 @@ async def on_message(message):
         gc = gspread.authorize(creds)
         wks = gc.open('GJ재고관리').worksheet('거래처코드출력')
         wks.update_acell('A1', SearchID)
-        result = wks.acell('B1').value
+        result1 = wks.acell('B1').value
+        result2 = wks.acell('C1').value
+        result3 = wks.acell('D1').value
+        result4 = wks.acell('E1').value
         
-        embed = discord.Embed(
+        embed1 = discord.Embed(
             title = ' :printer:  거래처 코드 리스트 ',
-            description= '```' + SearchID + ' 거래처 코드는 ' + result + ' ```',
+            description= '```' + SearchID + ' 거래처 코드는 ' + result1 + ' ```',
             color=0x00Bfff
             )
-        await client.send_message(message.channel, embed=embed)
+        embed2 = discord.Embed(
+            title = '',
+            description= '**```css\n' + result2 + '```**',
+            color=0x50508C
+            )
+        embed3 = discord.Embed(
+            title = '',
+            description= '**```css\n' + result3 + ' ```**',
+            color=0x50508C
+            )
+        embed4 = discord.Embed(
+            title = '',
+            description= '**```css\n' + result3 + ' ```**',
+            color=0x50508C
+            )        
+        await client.send_message(message.channel, embed=embed1)
+        await client.send_message(message.channel, embed=embed2)
+        await client.send_message(message.channel, embed=embed3)
+        await client.send_message(message.channel, embed=embed4)
         
         
         
