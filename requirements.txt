@@ -1,0 +1,11 @@
+discord.py == 0.16.12
+PyGithub
+pyssml
+gspread
+oauth2client
+PyOpenSSL
+openpyxl
+youtube_dl
+bs4
+selenium
+PyNaCl
