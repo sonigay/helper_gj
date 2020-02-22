@@ -75,7 +75,7 @@ async def on_message(message):
             color=0x50508C
             )
         embed2 = discord.Embed(
-            title = ' :calling:  ' + SearchID + ' 재고현황! ',
+            title = '',
             description= '**```css\n' + result1 + '실시간조회가 아니라서 다소 차이가 있을수 있습니다. ```**',
             color=0x50508C
             )        
