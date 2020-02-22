@@ -66,14 +66,21 @@ async def on_message(message):
         wkstime = gc.open('GJ재고관리').worksheet('재고데이터')
         wks.update_acell('A1', SearchID)
         result = wks.acell('B1').value
+        result1 = wks.acell('C1').value
         result2 = wkstime.acell('A1').value
         
-        embed = discord.Embed(
+        embed1 = discord.Embed(
             title = ' :calling:  ' + SearchID + ' 재고현황! ',
-            description= '**```css\n' + SearchID + ' 재고현황 입니다.\n마지막 데이터 업로드시간은\n'+ result2 + ' 입니다.' + result + '실시간조회가 아니라서 다소 차이가 있을수 있습니다. ```**',
+            description= '**```css\n' + SearchID + ' 재고현황 입니다.\n마지막 데이터 업로드시간은\n'+ result2 + ' 입니다.' + result + '```**',
             color=0x50508C
             )
-        await client.send_message(message.channel, embed=embed)
+        embed2 = discord.Embed(
+            title = ' :calling:  ' + SearchID + ' 재고현황! ',
+            description= '**```css\n' + result1 + '실시간조회가 아니라서 다소 차이가 있을수 있습니다. ```**',
+            color=0x50508C
+            )        
+        await client.send_message(message.channel, embed=embed1)
+        await client.send_message(message.channel, embed=embed2)
         
         
     if message.content.startswith('!전월실적'):
@@ -129,17 +136,17 @@ async def on_message(message):
         embed2 = discord.Embed(
             title = '',
             description= '**```css\n' + result2 + '```**',
-            color=0x50508C
+            color=0x00Bfff
             )
         embed3 = discord.Embed(
             title = '',
             description= '**```css\n' + result3 + ' ```**',
-            color=0x50508C
+            color=0x00Bfff
             )
         embed4 = discord.Embed(
             title = '',
             description= '**```css\n' + result3 + ' ```**',
-            color=0x50508C
+            color=0x00Bfff
             )        
         await client.send_message(message.channel, embed=embed1)
         await client.send_message(message.channel, embed=embed2)
