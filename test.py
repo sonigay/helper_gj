@@ -153,6 +153,80 @@ async def on_message(message):
         await client.send_message(message.channel, embed=embed3)
         await client.send_message(message.channel, embed=embed4)
         
+    if message.content.startswith('!유심'):
+        SearchID = message.content[len('!유심')+1:]
+        gc = gspread.authorize(creds)
+        wks = gc.open('GJ재고관리').worksheet('유심출력')
+        wkstime = gc.open('GJ재고관리').worksheet('재고데이터')
+        wks.update_acell('A1', SearchID)
+        result2 = wkstime.acell('a1').value        
+        result = wks.acell('B1').value
+        result3 = wks.acell('C1').value
+        result4 = wks.acell('D1').value
+        result5 = wks.acell('E1').value
+        
+        embed1 = discord.Embed(
+            title = ' 📈 ' + SearchID + '유심현황! ',
+            description= '**```css\n' + SearchID + '잔여 유심현황 입니다.\n마지막 데이터 업로드시간은\n'+ result2 + ' 입니다.\n' + result + '```**',
+            color=0x50508C
+            )
+        embed2 = discord.Embed(
+            title = '',
+            description= '**```css\n ' + result3 + ' ```**',
+            color=0x50508C
+            )
+        embed3 = discord.Embed(
+            title = '',
+            description= '**```css\n ' + result4 + ' ```**',
+            color=0x50508C
+            )
+        embed4 = discord.Embed(
+            title = '',
+            description= '**```css\n' + result5 + ' 입니다. 실시간조회가 아니라서 다소 차이가 있습니다. ```**',
+            color=0x50508C
+            )
+        await client.send_message(message.channel, embed=embed1)        
+        await client.send_message(message.channel, embed=embed2)
+        await client.send_message(message.channel, embed=embed3)
+        await client.send_message(message.channel, embed=embed4)        
+        
+        
+    if message.content.startswith('!불량'):
+        SearchID = message.content[len('!불량')+1:]
+        gc = gspread.authorize(creds)
+        wks = gc.open('GJ재고관리').worksheet('불량출력')
+        wkstime = gc.open('GJ재고관리').worksheet('재고데이터')
+        wks.update_acell('A1', SearchID)
+        result2 = wkstime.acell('a1').value        
+        result = wks.acell('B1').value
+        result3 = wks.acell('C1').value
+        result4 = wks.acell('D1').value
+        result5 = wks.acell('E1').value
+        
+        embed1 = discord.Embed(
+            title = ' 📈 ' + SearchID + ' !불량현황 ',
+            description= '**```css\n' + SearchID + '불량형황 입니다.\n마지막 데이터 업로드시간은\n'+ result2 + ' 입니다.\n' + result + '```**',
+            color=0x50508C
+            )
+        embed2 = discord.Embed(
+            title = '',
+            description= '**```css\n ' + result3 + ' ```**',
+            color=0x50508C
+            )
+        embed3 = discord.Embed(
+            title = '',
+            description= '**```css\n ' + result4 + ' ```**',
+            color=0x50508C
+            )
+        embed4 = discord.Embed(
+            title = '',
+            description= '**```css\n ' + result5 + ' 입니다. 실시간조회가 아니라서 다소 차이가 있습니다. ```**',
+            color=0x50508C
+            )
+        await client.send_message(message.channel, embed=embed1)        
+        await client.send_message(message.channel, embed=embed2)
+        await client.send_message(message.channel, embed=embed3)
+        await client.send_message(message.channel, embed=embed4)        
         
         
         
